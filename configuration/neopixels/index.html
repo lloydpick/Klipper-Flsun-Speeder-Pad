@@ -1,0 +1,1558 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../adxl345/fysetc/">
+      
+      
+        <link rel="next" href="../../firmware/">
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.3">
+    
+    
+      
+        <title>Neopixels - Klipper FLSun Speeder Pad</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.6b71719e.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.2505c338.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#use-neopixels-ring-light" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Klipper FLSun Speeder Pad" class="md-header__button md-logo" aria-label="Klipper FLSun Speeder Pad" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Klipper FLSun Speeder Pad
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Neopixels
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Klipper FLSun Speeder Pad" class="md-nav__button md-logo" aria-label="Klipper FLSun Speeder Pad" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Klipper FLSun Speeder Pad
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2" tabindex="0" aria-expanded="false">
+          Re-Install
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Re-Install" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Re-Install
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reinstall/prerequisites/" class="md-nav__link">
+        Prerequisites
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reinstall/flash-sd-card/" class="md-nav__link">
+        Flash SD Card
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reinstall/flash-speeder-pad/" class="md-nav__link">
+        Flash Speeder Pad
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reinstall/configure-wifi/" class="md-nav__link">
+        Configure WiFi
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reinstall/connecting-to-ssh/" class="md-nav__link">
+        Connecting to SSH
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reinstall/update-ubuntu/" class="md-nav__link">
+        Update Ubuntu
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reinstall/change-timezone/" class="md-nav__link">
+        Change Timezone
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reinstall/change-wifi-location/" class="md-nav__link">
+        Change WiFi Location
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3" tabindex="0" aria-expanded="true">
+          Configuration
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Configuration" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Configuration
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../delete-old/" class="md-nav__link">
+        Delete Old Configs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" >
+      
+      
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_2" tabindex="0" aria-expanded="false">
+          Single Instance
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Single Instance" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Single Instance
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../single-instance/install/" class="md-nav__link">
+        Install
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../single-instance/configure/" class="md-nav__link">
+        Configure
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_3_3" type="checkbox" id="__nav_3_3" >
+      
+      
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_3" tabindex="0" aria-expanded="false">
+          Multiple Instances
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Multiple Instances" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          Multiple Instances
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../multiple-instances/install/" class="md-nav__link">
+        Install
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../multiple-instances/configure/" class="md-nav__link">
+        Configure
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../usb-serial/" class="md-nav__link">
+        USB Serial
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../update-klipperscreen/" class="md-nav__link">
+        Update KlipperScreen
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../crowsnest/" class="md-nav__link">
+        Crowsnest
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_3_7" type="checkbox" id="__nav_3_7" >
+      
+      
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_7" tabindex="0" aria-expanded="false">
+          Slicer Changes
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Slicer Changes" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_7">
+          <span class="md-nav__icon md-icon"></span>
+          Slicer Changes
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../slicer-changes/start-end/" class="md-nav__link">
+        Start / End GCode
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../slicer-changes/firmware-retraction/" class="md-nav__link">
+        Firmware Retraction
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../calibration/" class="md-nav__link">
+        Calibration
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_3_9" type="checkbox" id="__nav_3_9" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../adxl345/">ADXL345</a>
+          
+            <label for="__nav_3_9">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="ADXL345" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_9">
+          <span class="md-nav__icon md-icon"></span>
+          ADXL345
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adxl345/raspberry-pi-pico/" class="md-nav__link">
+        Raspberry Pi Pico
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adxl345/fysetc/" class="md-nav__link">
+        Fysetc Portable Input Shaper
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Neopixels
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Neopixels
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#macros" class="md-nav__link">
+    Macros
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#requirements" class="md-nav__link">
+    Requirements
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wiring" class="md-nav__link">
+    Wiring
+  </a>
+  
+    <nav class="md-nav" aria-label="Wiring">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#v400-mks-robin-nano-v20" class="md-nav__link">
+    v400 (MKS Robin Nano V2.0)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#super-racer-mks-robin-nano-v30v31" class="md-nav__link">
+    Super Racer (MKS Robin Nano V3.0/V3.1)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#super-racer-bigtreetech-skr-13" class="md-nav__link">
+    Super Racer (BigTreeTech SKR 1.3)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    Configuration
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../firmware/">Firmware</a>
+          
+            <label for="__nav_4">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Firmware" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Firmware
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_4_2" type="checkbox" id="__nav_4_2" >
+      
+      
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_4_2" tabindex="0" aria-expanded="false">
+          Super Racer
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Super Racer" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_2">
+          <span class="md-nav__icon md-icon"></span>
+          Super Racer
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../firmware/super-racer/mks-robin-nano-3-x/" class="md-nav__link">
+        MKS Robin Nano v3.x
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../firmware/super-racer/bigtreetech-skr-1-3/" class="md-nav__link">
+        BigTreeTech SKR 1.3
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_4_3" type="checkbox" id="__nav_4_3" >
+      
+      
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_4_3" tabindex="0" aria-expanded="false">
+          v400
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="v400" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_3">
+          <span class="md-nav__icon md-icon"></span>
+          v400
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../firmware/v400/mks-robin-nano-2-0/" class="md-nav__link">
+        MKS Robin Nano v2.0 / Nano v2.1 Clone
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../firmware/v400/bigtreetech-skr-3-0/" class="md-nav__link">
+        BigTreeTech SKR 3.0
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_5" tabindex="0" aria-expanded="false">
+          Misc
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Misc" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Misc
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/changelog/" class="md-nav__link">
+        Change Log
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/stl-files/" class="md-nav__link">
+        STL Files
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/useful-links/" class="md-nav__link">
+        Useful Links
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/thanks/" class="md-nav__link">
+        Thanks
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#macros" class="md-nav__link">
+    Macros
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#requirements" class="md-nav__link">
+    Requirements
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wiring" class="md-nav__link">
+    Wiring
+  </a>
+  
+    <nav class="md-nav" aria-label="Wiring">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#v400-mks-robin-nano-v20" class="md-nav__link">
+    v400 (MKS Robin Nano V2.0)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#super-racer-mks-robin-nano-v30v31" class="md-nav__link">
+    Super Racer (MKS Robin Nano V3.0/V3.1)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#super-racer-bigtreetech-skr-13" class="md-nav__link">
+    Super Racer (BigTreeTech SKR 1.3)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    Configuration
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="use-neopixels-ring-light">Use Neopixels Ring Light</h1>
+<p><img alt="Neopixels" src="https://user-images.githubusercontent.com/12702322/189089546-0705b277-79d4-4a16-bd79-75cb2c6bc493.png" /></p>
+<h2 id="macros">Macros</h2>
+<ul>
+<li>Turn On Neopixels with <code>NEOPIXEL_ON</code> macro</li>
+<li>Turn Off Neopixels with <code>NEOPIXEL_OFF</code> macro</li>
+<li>Turn On Neopixels in blue with <code>NEOPIXEL_BLUE</code> macro</li>
+<li>Turn On Neopixels in red with <code>NEOPIXEL_RED</code> macro</li>
+<li>Turn On Neopixels in green with <code>NEOPIXEL_GREEN</code> macro</li>
+<li>Turn On Neopixels in yellow with <code>NEOPIXEL_YELLOW</code> macro</li>
+<li>Turn On Neopixels in orange with <code>NEOPIXEL_ORANGE</code> macro</li>
+<li>Turn On Neopixels in violet with <code>NEOPIXEL_VIOLET</code> macro</li>
+<li>Turn on Neopixels based on nozzle temperature (All LEDs) with <code>HOTEND_GLOW</code> macro</li>
+<li>Turn on Neopixels based on nozzle temperature (LED by LED) with <code>HOTEND_PROGRESS</code> macro</li>
+<li>Turn on Neopixels based on bed temperature (All LEDs) with <code>BED_GLOW</code> macro</li>
+<li>Turn on Neopixels based on bed temperature (LED by LED) with <code>BED_PROGRESS</code> macro</li>
+<li>Turn on Neopixels based on printing progress (All LEDs) with <code>PERCENT_GLOW</code> macro</li>
+<li>Turn on Neopixels based on printing progress (LED by LED) with <code>PERCENT_PROGRESS</code> macro</li>
+<li>Turn on Neopixels based on printing speed (All LEDs) with <code>SPEED_GLOW</code> macro</li>
+<li>Turn on Neopixels based on printing speed (LED by LED) with <code>SPEED_PROGRESS</code> macro</li>
+</ul>
+<h2 id="requirements">Requirements</h2>
+<ul>
+<li>
+<p>Neon Flexible Tube 1m T1616-Side 10mm PCB: <a href="https://fr.aliexpress.com/item/4000095850068.html?spm=a2g0o.store_pc_allProduct.8148356.60.19667739Amjjs4&amp;pdp_npi=2%40dis%21EUR%21%E2%82%AC%2013%2C34%21%E2%82%AC%209%2C34%21%21%21%21%21%402100bddd16626284472777282ed43e%2112000015942927508%21sh">Here</a></p>
+</li>
+<li>
+<p>LED Strip WS2812 1 m 60 IP 30: <a href="https://fr.aliexpress.com/item/4001322411818.html?spm=a2g0o.productlist.0.0.456f5656HRHoUB&amp;algo_pvid=50309f27-48b8-4454-839b-91200ed7636a&amp;algo_exp_id=50309f27-48b8-4454-839b-91200ed7636a-1&amp;pdp_ext_f=%7B%22sku_id%22%3A%2212000029452067850%22%7D&amp;pdp_npi=2%40dis%21EUR%215.33%213.52%21%21%21%21%21%40210318b816680797236251936e4806%2112000029452067850%21sea&amp;curPageLogUid=B9A6EyfUBAps">Here</a></p>
+</li>
+<li>
+<p>Cable Ties 2.5mm</p>
+</li>
+<li>
+<p>Support (STL) : <a href="https://www.printables.com/model/272995-flsun-neopixels-ring-light-support">Here</a></p>
+</li>
+</ul>
+<h2 id="wiring">Wiring</h2>
+<h3 id="v400-mks-robin-nano-v20">v400 (MKS Robin Nano V2.0)</h3>
+<p><img alt="wiring" src="https://user-images.githubusercontent.com/12702322/189106620-6ebc2983-be6f-4fb2-a36e-89bb4cd7e54b.png" /></p>
+<h3 id="super-racer-mks-robin-nano-v30v31">Super Racer (MKS Robin Nano V3.0/V3.1)</h3>
+<p><img alt="wiring" src="https://user-images.githubusercontent.com/12702322/197017354-f78b9ec9-e959-41ba-b178-14a05bc11da8.png" /></p>
+<h3 id="super-racer-bigtreetech-skr-13">Super Racer (BigTreeTech SKR 1.3)</h3>
+<p><img alt="wiring" src="https://user-images.githubusercontent.com/12702322/197060341-a616cc7e-d92d-47be-963e-61aeb41b734b.jpg" /></p>
+<h2 id="configuration">Configuration</h2>
+<p>Go to your Mainsail Web interface then click on <code>Machine</code> tab.</p>
+<p>Open the <code>printer.cfg</code> file and modify the following line by removing the <code>#</code> at the very beginning:</p>
+<pre><code>[include neopixels.cfg]  #Enable if you want to use Neopixels
+</code></pre>
+<p>Now open the <code>KlipperScreen.conf</code> file and copy all of this code just before line <code>#~# --- Do not edit below this line. This section is auto generated --- #~#</code>:</p>
+<pre><code>[menu __main actions neopixels]
+name: {{ gettext('Neopixels') }}
+icon: neopixels
+
+[menu __main actions neopixels led_off]
+name: {{ gettext('Off') }}
+icon: neopixels-off
+method: printer.gcode.script
+params: {&quot;script&quot;:&quot;NEOPIXEL_OFF&quot;}
+
+[menu __main actions neopixels led_on]
+name: {{ gettext('On') }}
+icon: neopixels-on
+method: printer.gcode.script
+params: {&quot;script&quot;:&quot;NEOPIXEL_ON&quot;}
+
+[menu __main actions neopixels led_blue]
+name: {{ gettext('Blue') }}
+icon: neopixels-blue
+method: printer.gcode.script
+params: {&quot;script&quot;:&quot;NEOPIXEL_BLUE&quot;}
+
+[menu __main actions neopixels led_red]
+name: {{ gettext('Red') }}
+icon: neopixels-red
+method: printer.gcode.script
+params: {&quot;script&quot;:&quot;NEOPIXEL_RED&quot;}
+
+[menu __main actions neopixels led_green]
+name: {{ gettext('Green') }}
+icon: neopixels-green
+method: printer.gcode.script
+params: {&quot;script&quot;:&quot;NEOPIXEL_GREEN&quot;}
+
+[menu __main actions neopixels led_yellow]
+name: {{ gettext('Yellow') }}
+icon: neopixels-yellow
+method: printer.gcode.script
+params: {&quot;script&quot;:&quot;NEOPIXEL_YELLOW&quot;}
+
+[menu __main actions neopixels led_orange]
+name: {{ gettext('Orange') }}
+icon: neopixels-orange
+method: printer.gcode.script
+params: {&quot;script&quot;:&quot;NEOPIXEL_ORANGE&quot;}
+
+[menu __main actions neopixels led_violet]
+name: {{ gettext('Violet') }}
+icon: neopixels-violet
+method: printer.gcode.script
+params: {&quot;script&quot;:&quot;NEOPIXEL_VIOLET&quot;}
+
+[menu __main actions neopixels hotend_glow]
+name: {{ gettext('Hotend (All)') }}
+icon: extruder
+method: printer.gcode.script
+params: {&quot;script&quot;:&quot;HOTEND_GLOW&quot;}
+
+[menu __main actions neopixels hotend_progress]
+name: {{ gettext('Hotend (One by One)') }}
+icon: extruder
+method: printer.gcode.script
+params: {&quot;script&quot;:&quot;HOTEND_PROGRESS&quot;}
+
+[menu __main actions neopixels bed_glow]
+name: {{ gettext('Bed (All)') }}
+icon: bed
+method: printer.gcode.script
+params: {&quot;script&quot;:&quot;BED_GLOW&quot;}
+
+[menu __main actions neopixels bed_progress]
+name: {{ gettext('Bed (One by One)') }}
+icon: bed
+method: printer.gcode.script
+params: {&quot;script&quot;:&quot;BED_PROGRESS&quot;}
+
+[menu __main actions neopixels percent_glow]
+name: {{ gettext('Progress (All)') }}
+icon: clock
+method: printer.gcode.script
+params: {&quot;script&quot;:&quot;PERCENT_GLOW&quot;}
+
+[menu __main actions neopixels percent_progress]
+name: {{ gettext('Progress (One by One)') }}
+icon: clock
+method: printer.gcode.script
+params: {&quot;script&quot;:&quot;PERCENT_PROGRESS&quot;}
+
+[menu __main actions neopixels speed_glow]
+name: {{ gettext('Speed (All)') }}
+icon: speed+
+method: printer.gcode.script
+params: {&quot;script&quot;:&quot;SPEED_GLOW&quot;}
+
+[menu __main actions neopixels speed_progress]
+name: {{ gettext('Speed (One by One)') }}
+icon: speed+
+method: printer.gcode.script
+params: {&quot;script&quot;:&quot;SPEED_PROGRESS&quot;}
+
+[menu __print neopixels]
+name: {{ gettext('Neopixels') }}
+icon: neopixels
+
+[menu __print neopixels led_off]
+name: {{ gettext('Off') }}
+icon: neopixels-off
+method: printer.gcode.script
+params: {&quot;script&quot;:&quot;NEOPIXEL_OFF&quot;}
+
+[menu __print neopixels led_on]
+name: {{ gettext('On') }}
+icon: neopixels-on
+method: printer.gcode.script
+params: {&quot;script&quot;:&quot;NEOPIXEL_ON&quot;}
+
+[menu __print neopixels led_blue]
+name: {{ gettext('Blue') }}
+icon: neopixels-blue
+method: printer.gcode.script
+params: {&quot;script&quot;:&quot;NEOPIXEL_BLUE&quot;}
+
+[menu __print neopixels led_red]
+name: {{ gettext('Red') }}
+icon: neopixels-red
+method: printer.gcode.script
+params: {&quot;script&quot;:&quot;NEOPIXEL_RED&quot;}
+
+[menu __print neopixels led_green]
+name: {{ gettext('Green') }}
+icon: neopixels-green
+method: printer.gcode.script
+params: {&quot;script&quot;:&quot;NEOPIXEL_GREEN&quot;}
+
+[menu __print neopixels led_yellow]
+name: {{ gettext('Yellow') }}
+icon: neopixels-yellow
+method: printer.gcode.script
+params: {&quot;script&quot;:&quot;NEOPIXEL_YELLOW&quot;}
+
+[menu __print neopixels led_orange]
+name: {{ gettext('Orange') }}
+icon: neopixels-orange
+method: printer.gcode.script
+params: {&quot;script&quot;:&quot;NEOPIXEL_ORANGE&quot;}
+
+[menu __print neopixels led_violet]
+name: {{ gettext('Violet') }}
+icon: neopixels-violet
+method: printer.gcode.script
+params: {&quot;script&quot;:&quot;NEOPIXEL_VIOLET&quot;}
+
+[menu __print neopixels hotend_glow]
+name: {{ gettext('Hotend (All)') }}
+icon: extruder
+method: printer.gcode.script
+params: {&quot;script&quot;:&quot;HOTEND_GLOW&quot;}
+
+[menu __print neopixels hotend_progress]
+name: {{ gettext('Hotend (One by One)') }}
+icon: extruder
+method: printer.gcode.script
+params: {&quot;script&quot;:&quot;HOTEND_PROGRESS&quot;}
+
+[menu __print neopixels bed_glow]
+name: {{ gettext('Bed (All)') }}
+icon: bed
+method: printer.gcode.script
+params: {&quot;script&quot;:&quot;BED_GLOW&quot;}
+
+[menu __print neopixels bed_progress]
+name: {{ gettext('Bed (One by One)') }}
+icon: bed
+method: printer.gcode.script
+params: {&quot;script&quot;:&quot;BED_PROGRESS&quot;}
+
+[menu __print neopixels percent_glow]
+name: {{ gettext('Progress (All)') }}
+icon: clock
+method: printer.gcode.script
+params: {&quot;script&quot;:&quot;PERCENT_GLOW&quot;}
+
+[menu __print neopixels percent_progress]
+name: {{ gettext('Progress (One by One)') }}
+icon: clock
+method: printer.gcode.script
+params: {&quot;script&quot;:&quot;PERCENT_PROGRESS&quot;}
+
+[menu __print neopixels speed_glow]
+name: {{ gettext('Speed (All)') }}
+icon: speed+
+method: printer.gcode.script
+params: {&quot;script&quot;:&quot;SPEED_GLOW&quot;}
+
+[menu __print neopixels speed_progress]
+name: {{ gettext('Speed (One by One)') }}
+icon: speed+
+method: printer.gcode.script
+params: {&quot;script&quot;:&quot;SPEED_PROGRESS&quot;}
+</code></pre>
+<p>Once done, click on <code>SAVE &amp; RESTART</code> at the top right to save the file.</p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "navigation.indexes"], "search": "../../assets/javascripts/workers/search.e5c33ebb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.ba449ae6.min.js"></script>
+      
+    
+  </body>
+</html>
